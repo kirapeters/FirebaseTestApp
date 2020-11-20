@@ -12,14 +12,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 public class InsertActivity extends AppCompatActivity {
 
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
-
+    DatabaseFacade database;
     EditText nameText;
     EditText descriptionText;
 
@@ -28,11 +23,10 @@ public class InsertActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("firebasetest");
+        database = new DatabaseFacade("firebasetest");
 
-        nameText = (EditText) findViewById(R.id.text_name);
-        descriptionText = (EditText) findViewById(R.id.text_description);
+        nameText = findViewById(R.id.text_name);
+        descriptionText = findViewById(R.id.text_description);
     }
 
     @Override
@@ -61,7 +55,7 @@ public class InsertActivity extends AppCompatActivity {
 
         SampleData data = new SampleData(name, description);
 
-        databaseReference.push().setValue(data);
+        database.addValue(data);
     }
 
     private void clean() {
