@@ -13,18 +13,18 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DatabaseFacade {
     private String referenceName;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    private DatabaseReference rootDatabaseReference;
+    private DatabaseReference dataReference;
     private ChildEventListener childEventListener;
 
     DatabaseFacade(String name) {
         this.referenceName = name;
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child(referenceName);
+        rootDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        dataReference = FirebaseDatabase.getInstance().getReference().child(referenceName);
     }
 
     public void addValue(Object data) {
-        databaseReference.push().setValue(data);
+        dataReference.push().setValue(data);
     }
 
     public void addChildEventWithTextView(TextView textView) {
@@ -57,6 +57,6 @@ public class DatabaseFacade {
             }
         };
 
-        databaseReference.addChildEventListener(childEventListener);
+        dataReference.addChildEventListener(childEventListener);
     }
 }
