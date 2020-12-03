@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# to not include the api key to firebase
+app/google-services.json
