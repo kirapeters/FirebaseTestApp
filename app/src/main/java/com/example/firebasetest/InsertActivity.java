@@ -23,7 +23,7 @@ public class InsertActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert);
 
-        database = new DatabaseFacade("firebasetest");
+        database = new DatabaseFacade("tempAuthor");
 
         nameText = findViewById(R.id.text_name);
         descriptionText = findViewById(R.id.text_description);
