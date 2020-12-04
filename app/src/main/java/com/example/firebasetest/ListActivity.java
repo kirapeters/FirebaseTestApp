@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
     private final String TAG = "ListActivity";
-    DatabaseFacade database;
 
     List<SampleData> sampleDataList = new ArrayList<>();
 
@@ -25,8 +24,6 @@ public class ListActivity extends AppCompatActivity {
         getIntent();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        database = new DatabaseFacade("firebasetest");
-//        database.addChildEventWithTextView(recyclerView);
 
         sampleDataList.add(new SampleData("Kira", "Is Awesome"));
         sampleDataList.add(new SampleData("Simon", "Is Cool"));
